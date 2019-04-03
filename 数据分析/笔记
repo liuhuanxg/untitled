@@ -1,0 +1,7 @@
+#内容太大时，强制显示所有内容，不省略
+np.set_printoptions(threshold=np.NaN)
+
+#显示中文
+plt.rcParams['font.sans-serif']='SimHei'
+#显示-号
+plt.rcParams['axes.unicode_minus']=False

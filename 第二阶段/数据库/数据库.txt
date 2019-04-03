@@ -1,0 +1,246 @@
+学号     姓名      性别      年龄     班级
+1        Tom        1        18      Python07
+2        Jack       1        20      Python07
+3        Michael    1        19      Python07
+
+一列的类型相同
+能存储的数据类型：
+数字：int（整数）(tinyint:-128-127) （不能限制位数）
+(小数)（5,2）表示一共有五位数，小数位有两位
+字符串：char（10）'sunck     '   varchar(10) 可变的存储空间 'sunck'
+ enum("boy","girl")   选择，只能选其中的一个
+时间型：year，yyy
+布尔：bit    只有0、1   0代表false，1代表true
+
+
+在cmd中操作数据库： 必须加；（分号）
+打开数据库：mysql -u root -p
+查看所有数据库：show databases；
+选择库：use  库名    出现Database changed代表进入库
+没有选择的库，创建一个库
+创建库：create  database   库名；
+查看库下所有的表：show tables；
+新建的库没有表 那么就会出现empty  set
+
+创建表：
+create table 表名  stu_1(username varchar(66),age int(3),password char(66));
+create table 表名  stu (sex enum("boy"，"girl","","",""))；
+
+字段属性：
+取消设置null
+create table 表名  worker  (name carchar(66) not null default "DB_NAME",age int not null default 0);
+unsigned：让结果全为正，如：
+create table tab1(age tinyint unsigned)结果是age范围从（-128-127）改为（0-255）
+icreate table tab1(age tinyint zerofll）zerofill 属性附带  unsigned属性  且这两个属性禁止与not null连用
+icreate table tab1(age int（6） zerofll）此时age必须满足6位，当不满足6位是，用0补齐
+
+数据库操作语句:
+插入：insert into worker（name） values('zhangsan')('lisi');对行进行操作
+修改： update worker set sex ="woman" where name ="lisi";
+       update worker set age=18,address='shanghai' where name='wangwu';
+       修改其中某个属性，用逗号隔开可以修改多个属性    where可以不写，但会修改全部
+删除：delete from worker where name in ("zhangsan","lisi");
+       NULL不能作为条件
+
+设置带有主键的表：主键不能重复。
+create table login(id int not null auto_increment primary key,username varchar(66)
+ not null default '',password char(32));
+
+auto_increment 自增长   primary key（主键）
+
+insert into login values(null,"Eric",md5("123"));
+如：当插入id为null的列时，假设上边id为4，则下边id会自动加1
+当插入一个id为100的时，下一个id为101
+此时再插入一个id为7的，则7会按顺序排在100的前边
+
+时间属性：从1970年1月1日0时0分0秒    格林朗日   零时区
+          year ('2018')
+          timestamp(自动生成当前时间)
+          date      ('2018-8-01')
+          time      ('20:20:20')
+          datetime  ('2018-8-01  20:20:20')
+
+查看表的结构：         desc stu
+查看表的内容：         select * from stu;显示表格内容
+查看创建表的信息：     show create table  表名；
+
+\s    查看字符集类型
+修改表的字符集规则：
+        set names 'utf8';    默认utf8
+        set names 'gbk';
+create qwe(id int,name varchar(66)) engine=mysiam default charset=gbk;
+
+create table asd(id int,name varchar(66)) engine=innodb default charset=utf8;
+
+删除结构：
+      drop    table        表名     删除表
+      drop    database     库名     删除库
+      drop    字段名                删除字段
+
+修改表名： alter table asd rename user;
+
+给表中添加字段：
+alter table user add birth date not null default '2018-02-20' after username;
+添加在第一个位置用first
+
+ alter table student add del enum('0','1') not null default '1';
+ 添加删除字段
+
+删除表中某个字段： alter table user drop birth;
+
+修改某个字段的名字：
+ alter table user change password name varchar(11) not null default '';
+ 把password修改为mima    只有类型相似才能修改。
+ enum('boy','girl')只能修改为enum('boy','girl')格式
+
+详细查询：select （字段） from student where id=3;
+          select * from student where id/2=5;
+可以使用运算符： + — * / %  =  <  >
+逻辑运算：&&                   同时满足
+          || 与 or             两边只要满足的都会查出来
+          ！=  与  not in      不等于
+
+
+模糊查询：like    _a      一个_代表一个字符
+          like    %a     代表以a结尾的所有字符
+          like    %a%    代表只要含有a的所有字符
+
+
+排序查询：为所查出的数据进行排序：
+            select * from student order by height desc;
+            按体重倒序排序，desc代表逆序，asc代表正序
+
+聚合查询：其实就是另一种形式的运算，方便统计
+           select count(id) from student;
+           统计id的数量
+           max  min   avg   sum
+
+区间查询：select * from student where age >= 18  and age <= 22;
+          select * from student where age between 18 and 22;
+          查询18到22之间的数据，包含18以及22
+
+受限查询：select * from student limit x,y;
+          从下标为x的查，查出来y个
+
+分组查询：
+select  展现的列  from  表名  group  by  参考列
+select  name,count（列）  from  表名  group  by   name
+select  name,count(content)  from  表名  group  by   name  having   count(content)  >  5
+
+例：
+select name,count(id) from worker group by name;
+select name,count(id) from worker group by name having count(id) > 3;
+select name,count(*) from worker group by name order by count(*) desc limit 0,3;
+
+
+子查询、联合查询：
+select   表1.列，表2.列  from 表1  join  表2  on  表1.列 = 表2.列
+left  right
+嵌套查询|联合查询：  select  * from  表名  where  列  in（select  列  from  表名  where  列  =  值）
+Select  表1.列，表2.列  from  表1，表2  where 表1.id = 表2.pid；
+
+
+不能存储相同名字：但id会被占用。
+create table login(id int not null auto_increment primary key,username varchar(66) not null default ''unique
+word char(32));
+
+
+索引
+	索引介绍
+		用处：  几乎所有的索引都是添加到字段中的
+		作用：  使用索引，是为了加快查询速度，提高查询效率，约束数据的有效性
+		原理：  系统根据某种算法或者未来添加的数据，单独建立一个文件，实现快速匹配查找
+	索引的优点
+		通过唯一索引可以创建出每一行数据的唯一性
+		可大大提高数据库的检索速度，这是最主要的原因
+		加强表与表之间的联系，实现多表查询
+		在分组和排序中，同样可以少耗费很多时间
+		可以提高表的性能
+	索引的分类
+		主键索引
+			作用：  确定数据表中一条特定数据记录的位置
+			关键字：  primary  key
+			创建：  一般创建在建表时候  id  int  not  null  auto_increment  primary  key
+			注意：  主键不能为空，一个表中只能有一个主键索引
+		外键索引
+			概念：  外面的键，不是在自己的表中，如果一张表中的一个字段（非主键）指向另一张表中的主键，那么可以称该字段为外键
+			作用：  用来在多表查询的时候方便联系两表数据
+			关键字：  foreign  key
+			使用：  foreign  key（外键名）  references  主表（主键）
+			约束
+				对子表：  在对子表进行增和改的时候，如果外键对应在父表中找不到，那么就会失败
+				对父表：  在对父表进行删和改的时候，如果在主表中已有数据被引用，那么也将失败
+			外键的形成条件
+				要求表类型必须是innodb
+				如果不是innodb，那么及时创表成功，也没有了约束的效果
+				外键的数据类型必须与主键的数据类型一致
+				在一张表中外键名不能重复
+				如果数据存在，那么必须保证外键中的数据和附表中的主键数据一致
+		唯一索引
+			作用：  唯一索引是为了避免出现重复的值，他的存在不是为了提高访问速度，而是避免出现重复数据
+			关键字：  unique
+			使用：  一般在创建列的时候使用   name  char（30）  not  null  default  ‘DB’  unique
+			注意：  只有确认某一列不能出现重复的值得时候才能使用
+		普通索引
+			概念：  普通索引依附在某一列上，提高查询速度
+			关键字：  index
+			使用：  create  index  索引名  on  表名（列名）
+		索引的操作
+			查看索引：  show  index   from  表名
+			删除索引：  drop  index  索引名  on  表名
+	索引的缺点
+		运行速度：  添加索引会延缓插入数据和修改数据的速度
+		耗费空间：  索引本身产生的文件就有可能比数据的文件还要大
+		消耗时间：  创建索引和维护索引要耗费时间，这种时间是根据数据量的增加而增加
+建立外键：
+create table score(id int not null auto_incriment
+primary key,python int not null default 80,linux int not
+null default 80,mysql int not null default 80,pid int
+not null default 1,foreign key(pid) references student(id));
+
+
+ 索引例句：
+ select student.name,score.linux,score.python,score.mysql
+ from student,score where score.pid=student.id;
+
+  select student.name,score.python,score.linux,score.mysql
+  from student join score on student.id=score.pid;
+
+
+视图
+	概念
+		视图是一张虚拟的表，不占用物理内存
+		视图不存放数据，数据只存在基表中，但是他们发生变化都会互相影响
+		视图会给我们带来很多的方便，
+	视图的优势
+		简单、方便，可以在查看数据的时候变得更清楚
+		安全性：保护数据库中重要的数据，不让它展现在页面中
+		逻辑数据独立性：不占用物理空间
+	视图的缺点
+		性能差  ：  查询的效率偏低，每次查询是都要转换
+		修改限制  ：  对于复杂视图来说（多表查询）修改是非常麻烦的
+	视图的使用
+		创建视图  ：  create  view  视图名   as   select   语句
+		查询视图
+			show  create   view  视图名
+		删除视图
+			drop  view  视图名
+		在视图中对数据的增删改查与在表中都一样
+
+数据库事务
+	事务概念
+		数据库是将多个SQL语句要完成的任务看成是一个任务
+		只要有一个环节出现错误，那么所有的语句都不会执行
+	事务的限制
+		使用事务时，表的数据类型必须是innodb类型
+		在使用数据库事务之前，必须关闭数据库的自动提交
+	回滚
+		回滚  ：  相当于返回，返回前面的操作
+		回滚  ：  rollback
+	提交：默认自动提交
+		开启自动提交  ：  set   autocommit = 1
+		关闭自动提交  ：  set  autocommit = 0
+		提交  ：  commit
+
+
+
