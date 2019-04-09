@@ -1,8 +1,8 @@
 #字符串常见操作和函数
 str1='kkJHGse'
 print(dir(str1))
-print(str1)    #KkJHGse
-print(str.capitalize(str1))
+print(str1)
+print(str.capitalize(str1)) #Kkjhgse
 #Kkjhgse    将第一个字符转换为大写（如果第一个字符不是字母则不转化），其余字母转化为小写
 
 print(str1.center(9))      #位于15个字符中间，两端用空格补充

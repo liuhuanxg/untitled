@@ -3,4 +3,4 @@ b=(1,2,3)
 c={'name':'张三'}
 print(a)
 print(b)
-print(str(c))
+print(str(c),type(str(c)))
