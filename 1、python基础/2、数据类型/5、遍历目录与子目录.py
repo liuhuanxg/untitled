@@ -1,4 +1,3 @@
-#encoding:utf-8
 import os
 #遍历目录与子目录，抓取.pyc文件
 """第一种方法"""

@@ -163,4 +163,3 @@ str='sunck   is a good man'
 print(str.split(' '))
 s=re.split(r' +',str)
 print(s)
-
