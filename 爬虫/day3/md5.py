@@ -13,3 +13,9 @@ m=hashlib.md5()
 m.update(pwd.encode('utf-8'))
 s_pwd=m.hexdigest()
 print(s_pwd)
+
+link="asfsljdaslfjasl"
+md=hashlib.md5()
+md.update(link.encode("utf-8"))
+pwd=md.hexdigest()
+print(pwd)

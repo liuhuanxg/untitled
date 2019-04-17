@@ -140,12 +140,12 @@ print(soup.select('#banner01'))
 #后代查找
 print(soup.select('div #taobao'))
 #直接子标签查找
-print(soup.select("head > title"))
+print("title",soup.select("head > title"))
 #属性查找
-print(soup.select('div img[class="weixin"]'))
+print("img",soup.select('div img[class="weixin"]'))
 
 #获取内容
-print(soup.select('h2')[0].get_text())
+print("h2",soup.select('h2')[0].get_text())
 
 for h2 in soup.select('h2'):
     print(h2.get_text())
