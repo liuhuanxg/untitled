@@ -31,10 +31,10 @@ total(19,22,23,24,23,name='张三',age=19)
 
 #命名关键字参数   在可变参数的后边    没可变参数时需要加*，
 def eat(fruit,food,*args,milk):
-    print(fruit)
-    print(food)
-    print(args)
-    print(milk)
+    print("fruit:",fruit)
+    print("food",food)
+    print("args:",args)
+    print("milk:",milk)
 eat('西瓜','鸡蛋',11,23,24,milk='蒙牛')
 
 def sleep(*,hour):

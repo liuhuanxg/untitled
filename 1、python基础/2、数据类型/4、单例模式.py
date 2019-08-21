@@ -76,4 +76,6 @@ class Foo(Father):
 
 f1=Foo()
 f2=Foo()
+print(id(f1))
+print(id(f2))
 print(f1 is f2)

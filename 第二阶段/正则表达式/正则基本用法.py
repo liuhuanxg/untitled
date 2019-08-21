@@ -14,7 +14,7 @@ import re
 \v    匹配一个垂直制表符；等价于\x0b或\ck
 
 '''
-# ret = re.match('si','sichuan')
+# ret = re.match('si', 'sichuan')
 # print(ret.group())
 # ret = re.match('\d','0sichuan')
 # print(ret.group())
@@ -22,8 +22,8 @@ import re
 # print(ret.group())
 # ret = re.match('\w','sichuan')
 # print(ret.group())
-# ret = re.match('\W','%sichuan')
-# print(ret.group())
+ret = re.match('\W','%sichuan')
+print(ret.group())
 # ret = re.match('\s',' sichuan')
 # print(ret.group())
 # ret = re.match('\S','sichuan')
@@ -52,6 +52,6 @@ print(j.group())
 print(l)
 '''
 
-str='1222223ADsda@!@#a'
-s=re.search(r'\d*A',str)
-print(s.group())
+# str='1222223ADsda@!@#a'
+# s=re.search(r'\d*A',str)
+# print(s.group())

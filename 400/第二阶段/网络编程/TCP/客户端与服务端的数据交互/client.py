@@ -1,6 +1,6 @@
 import socket
 client=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-client.connect(('192.168.191.1',8088))
+client.connect(('10.10.107.111',8088))
 
 while True:
     data=input('请输入给服务器发送的数据：')

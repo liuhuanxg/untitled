@@ -11,7 +11,7 @@ print(result)
 # print(result)
 
 # os.mkdir('girls')   #创建空文件夹
-# os.mkdir('boys',0o777)
+os.mkdir('boys',0o777)
 # os.makedirs('home/vc/ss')   #循环创建文件夹
 # os.removedirs('home/vc/ss')  #循环删除空文件夹
 # os.rename('home','HOME')     #文件夹重命名
@@ -83,7 +83,7 @@ import time
 
 filepath = r'E:\PYTHON\untitled\面试基础\19、十大排序.py'
 
-result = os.path.getctime(filepath)  #获取文件的创建事件
+result = os.path.getctime(filepath)  #获取文件的创建时间
 print(time.ctime(result))   #把秒时间转为日期
 
 result=os.path.getmtime(filepath)   #获取文件的修改时间

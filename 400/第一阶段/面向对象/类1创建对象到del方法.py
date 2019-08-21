@@ -174,10 +174,10 @@ class Person(object):
     def __del__(self):
         print('这里是析构函数。')
 per4=Person('西瓜',22,177,72)
-del per4
+# del per4
 #释放对象
-# print(per4.name)
-# 对象释放以后就不。能在访问了
+print(per4.name)
+# 对象释放以后就不能在访问了
 
 
 #在函数里定义的对象，会在函数结束时自动释放，这样就可以用来减少内存空间的浪费

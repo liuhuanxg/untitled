@@ -23,3 +23,6 @@ print(d2)
 
 dict3 = dict(key1="33",key2="44")
 print(dict3)
+
+dict4=dict()
+print(type(dict4))

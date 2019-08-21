@@ -1,7 +1,9 @@
 #将字典按照value值排序
 """
 d= {'a':24,'g':52,'i':12,'k':33}
+print(d.items())
 d1=sorted(d.items(),key=lambda x:x[1])
+print(d1)
 dict={}
 for i in d1:
     dict[i[0]]=i[1]
