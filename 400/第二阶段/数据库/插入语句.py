@@ -1,6 +1,6 @@
 import pymysql
 
-db=pymysql.connect('localhost','root','426425','python0723')
+db=pymysql.connect('localhost','root','root','python0715')
 content=db.cursor()
 sql='insert into student values( null，xiaoming ,40 ,boy,Aiouniya,175,2,1978-04-30,18690307883,1)'
 #执行语句

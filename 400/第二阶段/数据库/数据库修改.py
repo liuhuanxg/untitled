@@ -1,6 +1,6 @@
 import pymysql
 
-db=pymysql.connect('localhost','root','426425','python0723')
+db=pymysql.connect('localhost','root','root','python0715')
 content=db.cursor()
 sql='update student set name=zhangsan where id=1'
 #执行语句

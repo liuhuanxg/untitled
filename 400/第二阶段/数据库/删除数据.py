@@ -1,6 +1,6 @@
 import pymysql
 
-db=pymysql.connect('localhost','root','426425','python0723')
+db=pymysql.connect('localhost','root','426425','python0715')
 content=db.cursor()
 sql='delete from student  where id=1'
 #执行语句

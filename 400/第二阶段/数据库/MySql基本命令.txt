@@ -20,6 +20,15 @@
     7、远程连接
             格式：mysql -h ip地址  -u   用户名    -p
             输入密码
+    8.常见的字段约束
+        Unsigned       无符号  一般给数值型的字段添加
+                        如果添加代表当前字段只能存正数
+        Int(5)         5代表显示的宽度  如果是有符号默认是11  如果是无符号默认10
+        Not null       不能为空 默认字段可以为空 如果添加了 那么此字段不能为空
+        Default         默认值
+        Primary key     主键约束(主键索引) 不能为空 且唯一 用于表示数据的唯一标识
+        Unique          唯一约束(唯一索引) 可以为空 不能重复 具有唯一性
+        Auto_increment  自动递增  一般配合主键去使用
 
 二、数据库操作（数据库操作必须以英文;结束）
     1、查看有哪些数据库：show databases;
@@ -39,8 +48,18 @@
     5、查看建表语句：show create table 表名;
     6、重命名表名：1、rename table  表名1 to  表名2;
                    2、alter table 表名1 rename   表名2;
-    7、修改表：alter table add、drop、change  字段名(类型);
-                        添加、修改、删除
+    7、修改表：alter table 表名 add、drop、change  字段名  类型;
+               alter table teachers add phone int(11); 添加电话字段
+               alter table teachers change phone name varchar(11); 修改phone-name
+               alter table teachers drop name;删除(name)
+       修改字段类型：alter table 表名 modify 字段名 类型;
+                    alter table teachers modify name varchar(12);
+    8、修改表的编码格式
+		alter table students CHARSET=GBK;
+	9、修自增值
+		修改自增值为20
+		alter table students AUTO_INCREMENT=20;
+
 四、数据操作
     1、增：
         a、全列插入：insert into  表名   values();
@@ -64,6 +83,7 @@
             在select跟后面字段中间使用distinct可以消除重复的行
             示例：select distinct name from student;
     3、条件查询
+            between 前后都会包含
             a、语法：select * from 表名 where 条件;
             b、比较运算符：+,-,*,/,=,!=,<,>,%
                示例：select * from 表名 where id<8;
@@ -107,6 +127,7 @@
              where和having的区别：
              where是对from后面指定的表进行筛选，属于对原始表进行筛选。
              having是对group by的结果进行筛选
+     select id,name from teachers where name in (select name from teachers group by name having count(name)>1);
     6、排序:
              语法：select * from 表名 order by 列1 asc|desc,列2 asc|desc
              说明：将数据按照列1进行排序，如果某些列1的值相同，那么按照列2排……

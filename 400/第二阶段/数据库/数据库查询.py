@@ -10,7 +10,7 @@ fetchone()：获取下一个查询结果集，结果集是一个对象
 fetchall():接受全部返回的行
 rowcount:是一个只读属性，返回execute()方法
 '''
-db=pymysql.connect('localhost','root','426425','python0723')
+db=pymysql.connect('localhost','root','root','python0715')
 
 #创建一个cursor对象
 content=db.cursor()
