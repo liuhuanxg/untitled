@@ -47,13 +47,13 @@
     4、查看表结构：desc 表名;
     5、查看建表语句：show create table 表名;
     6、重命名表名：1、rename table  表名1 to  表名2;
-                   2、alter table 表名1 rename   表名2;
+                   2、alter table 表名1 rename  as 表名2;
     7、修改表：alter table 表名 add、drop、change  字段名  类型;
                alter table teachers add phone int(11); 添加电话字段
-               alter table teachers change phone name varchar(11); 修改phone-name
+               alter table teachers change phone name varchar(11); 修改phone —> name
                alter table teachers drop name;删除(name)
        修改字段类型：alter table 表名 modify 字段名 类型;
-                    alter table teachers modify name varchar(12);
+               alter table teachers modify name varchar(12);
     8、修改表的编码格式
 		alter table students CHARSET=GBK;
 	9、修自增值

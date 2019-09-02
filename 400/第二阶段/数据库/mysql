@@ -1,0 +1,30 @@
+一：基本命令
+    1、启动数据库服务:
+        net start mysql
+    2、停止数据库服务:
+        net stop mysql
+    3、连接数据库:
+        mysql -uroot -proot -hlocalhost -P3306
+
+二、数据库命令
+    1、查看所有数据库
+        show databases;
+    2、进入数据库
+        use 库名
+    3、查看所有数据表
+        show tables;
+    4、创建数据库
+        CREATE DATABASE 库名
+    5、创建数据表
+        CREATE TABLE student(id int not null auto_increment primary key,name varchar(11) not null,age int(3) unsigned,gender char(1) not null default '0',email varchar(11),class varchar(11));
+    6、删除数据库、数据表
+        drop database 库名;
+        drop table 表名;
+    7、修改数据表名
+        rename table 原表名  to  现表名
+
+    select class,count(class),gender from student where class not in (select class from student group by class,gender having gender!='1') group by class;
+
+    select class,count(class) from student where class in (select class from
+student group by class having count(class)>1) group by class;
+
