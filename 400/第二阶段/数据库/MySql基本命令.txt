@@ -146,11 +146,17 @@
      示例:select students.name,class.name,class.id from class inner join students
           on class.id=students.pid;
      分类：
-     1、表A inner join 表B：
+     1、表A inner join 表B：内连接 交集查询
          表A与表B匹配的行会出现在结果集中
+         select * from 表1 inner join 表2 on 表1.外键字段=表2.主键字段;
      2、表A left join 表B：
          表A与表B匹配的行会出现在结果集中，外加表A独有的数据，
          未对应的数据使用null填充
      3、表A right join 表B：
          表A与表B匹配的行会出现在结果集中，外加表B独有的数据，
          未对应的数据使用null填充
+七、数据备份
+    先退出mysql环境
+    数据的到处
+        备份表：默认导出在当前路径
+        格式：mysqldump -uroot -p 库名 表名>name.sql
