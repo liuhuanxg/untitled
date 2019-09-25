@@ -1,0 +1,28 @@
+八、创建索引
+    1、索引是为了提升查询速度，会降低添加数据、更新数据、删除数据的速度。
+    2、经常用于where查询条件的字段添加索引  如：id。
+    3、字段重复数据较大的数据不适合添加索引，如：性别，保证数据的唯一性，唯一性越高查询速度越快。
+    4、数量较少的表，不适合添加索引。
+    (1)使用alter table 语句创建索引
+        普通索引：
+        alter table TABLE_NAME ADD INDEX INDEX_NAME(COLUMN_LIST);
+        唯一索引：
+        alter tableTABLE_NAME ADD unique (COLUMN_LIST);
+        主键索引：
+        alter table table_name add primary key (COLUMN_LIST)；
+    (2)使用create index语句对表增加索引
+        create index index_name on table_name(username(length));
+        如果是char或varchar类型，length可以小于字段实际长度;如果是BLOB和TEXT类型，必定要指定length
+        create只能创建两种索引：普通索引和唯一索引
+        create index index_name on table_name (column_list);
+        create unique index index_name on table_name (columb_list);
+        不能使用create index创建primary key索引
+    (3)删除索引
+        删除索引可以使用alter table 或 drop index语句来实现，drop index可以在alter table内部作为一条语句处理
+        格式:drop index index_name on table_name;
+        alter table table_name drop index index_name;
+        alter table table_name drop primary key;
+        一个表只有一个primary key索引，如果没有primary key，有多个unique索引时，则MySQL将删除掉第一个unique索引。
+
+
+

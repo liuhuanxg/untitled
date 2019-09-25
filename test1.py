@@ -41,6 +41,10 @@ print(arr4.shape)
 print(arr4.reshape(-1,1))
 
 """
+str1=input("请输入：")
+print("您的输入是：",str1)
 #15、简述聚类和分类的区别
+
+
 
 #16、卷积神经网络分为几层，每一层的作用是什么？
