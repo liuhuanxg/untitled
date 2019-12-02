@@ -8,6 +8,8 @@
         备份库：
             格式：mysqldump -uroot -p 库名>路径/name.sql
             例：mysqldump -uroot -p test>./Desktop/test.sql
+    数据的导入：
+​		mysql  -uroot  -p 库名 < 备份文件地址.sql
 
 八、权限管理
     用户      使用者

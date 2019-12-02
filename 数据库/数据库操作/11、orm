@@ -1,0 +1,26 @@
+ORM对象关系映射
+全称 Object Relational Mapping，对象关系映射
+
+将数据库中的表映射为python中的类，，一张表就是一个类，表中的字段映射为类的属性
+将python代码翻译为对应的数据库sql语句
+
+orm在代码中充当的角色  翻译者的角色
+将对象的操作翻译为数据的操作
+
+优点：
+    1、降低耦合
+    2、开发人员只需要关注业务逻辑，降低开发人员的工作强度
+缺点：
+    1、降低查询效率。
+    2、受orm方法的限制，复杂查询不容易编写
+
+python中的ORM,即sqlalchemy，仿照的是Django框架的ORM。
+flask中有ORM的插件即：flask-sqlalchemy
+安装：
+    在命令行执行：pip install sqlalchemy
+使用：
+1、导包
+2、创建连接
+3、声明一个基类
+4、创建类-数据模型
+5、操作

@@ -1,7 +1,7 @@
 #-*-coding:utf-8 -*-
 """
 @project:untitled
-@File: demo2-股吧单页面.py
+@File: demo2-股吧多线程.py
 @Time: 2019/11/26 11:21
 @user：python-刘欢    
 """
@@ -33,18 +33,15 @@ class Crawl_thread(threading.Thread):
 
             title_pattern = re.compile(r'class="note">(.*?)</a></span>')
             title_list = re.findall(title_pattern,ul)
-            print(len(title_list),title_list)
+            result_list.append(title_list)
 
             ba_pattern = re.compile(r'class="balink">(.*?)</a>',re.S)
             ba_list = re.findall(ba_pattern,ul)
-            print(len(ba_list),ba_list)
             zuozhe_pattern = re.compile(r'<font>(.*?)</font>',re.S)
             zuozhe_list = re.findall(zuozhe_pattern,ul)
-            print(len(zuozhe_list),zuozhe_list)
 
             date_pattern = re.compile(r'<cite class="last">(.*?)</cite>',re.S)
             date_list = re.findall(date_pattern,ul)
-            print(len(date_list),date_list)
 
             pinglun_pattern = re.compile(r'<li>(.*?)</li>',re.S)
             pinglun_list = re.findall(pinglun_pattern,ul)
@@ -53,11 +50,17 @@ class Crawl_thread(threading.Thread):
                 data = re.findall(read_pattern,p)
                 read = data[0].strip()
                 pinglun = data[1].strip()
-                print(read,pinglun)
 
             href_pattern = re.compile('</em> <a href="(.*?)" title="')
             href_list = re.findall(href_pattern,ul)
-            print(href_list)
+
+result_list = []
+import json
+def outputFile():
+    print(len(result_list))
+    data = json.dumps(result_list,ensure_ascii=False)
+    with open('guba.json','w',encoding='utf-8') as fp:
+        fp.write(data)
 if __name__ == '__main__':
     start = time.time()
     page_queue = Queue()
@@ -73,3 +76,4 @@ if __name__ == '__main__':
         c.join()
     end = time.time()
     print(end-start)
+    outputFile()

@@ -7,7 +7,7 @@
         普通索引：
         alter table TABLE_NAME ADD INDEX INDEX_NAME(COLUMN_LIST);
         唯一索引：
-        alter tableTABLE_NAME ADD unique (COLUMN_LIST);
+        alter table TABLE_NAME ADD unique (COLUMN_LIST);
         主键索引：
         alter table table_name add primary key (COLUMN_LIST)；
     (2)使用create index语句对表增加索引
@@ -23,6 +23,3 @@
         alter table table_name drop index index_name;
         alter table table_name drop primary key;
         一个表只有一个primary key索引，如果没有primary key，有多个unique索引时，则MySQL将删除掉第一个unique索引。
-
-
-

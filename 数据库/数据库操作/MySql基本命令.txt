@@ -2,11 +2,11 @@
     1、启动服务
         说明：以管理员身份运行cmd
         格式：net start  服务名称
-        实例：net start  mysql
+        示例：net start  mysql
     2、停止服务
          说明：以管理员身份运行cmd
          格式：net  stop   服务名称
-         实例：net  stop   mysql
+         示例：net  stop   mysql
     3、连接数据
           格式：mysql -hlocalhost -u   用户名   -p  -P3306
           示例：mysql  -u   root     -p
@@ -71,6 +71,7 @@
     3、改：
         a、修改数据：
              update 表名  set  name='zhangsan' where id =1;
+             UPDATE 表名 SET text=REPLACE(text, 'oldvalue', 'newValue');
         说明：name='zhangsan'是将要修改成的数据，id=1是查找条件，不加条件会全部修改
     4、查：
        a、查询表中全部数据：select * from  表名;
@@ -91,7 +92,7 @@
             and     并且    select * from student where id>7 and gender=0;
             or      或者    select * from student where id>7 or gender=0;
                     说明：只要满足任意条件都会匹配出来
-            not in  不是    select * from student where id>7 not gender=0;
+            not     不是    select * from student where id>7 not gender=0;
             d、模糊查询：
                  示例：select * from student where name like '%a%';（只要包含a就会匹配出来）
                  说明：%代表包括空白在内的任意字符，_代表一个字符，
@@ -99,7 +100,7 @@
                  示例：select * from student where id in (1,2,6,8);
                  select * from student where id between 6 and 8;
             f、空判断:
-                insert into student(anme;age) values('特朗普',70);
+                insert into student(name,age) values('特朗普',70);
                 说明：null与''不同
                 select * from student where address is null;(或者is not)
             g、优先级
@@ -118,11 +119,11 @@
             按照字段分组，表示此字段相同的数据会被放到一个集合中。
             分组后，只能查询相同的数据列，对于有差异的数据列无法显示在结果集中
             可以对分组数据进行统计，做聚合运算
-            语法：select 列1,列2,聚合……  from  group by 列1，列2，列3，……
+            语法：select 列1,列2,聚合……  from  表 group by 列1，列2，列3，……
             需求：查询男女生总数：
             示例：select gender,count(*) from student group by gender;
             分组后的数据筛选：
-            select 列1,列2,聚合……  from  group by having 列1，列2，列3，……,聚合……
+            select 列1,列2,聚合……  from 表 group by having 列1，列2，列3，……,聚合……
             示例：select gender,count(*) from student group by gender  having gender=0;
              where和having的区别：
              where是对from后面指定的表进行筛选，属于对原始表进行筛选。
@@ -141,7 +142,7 @@
      1、create table class(id int auto_increnment primary key,name varchar(22)
       not null default '',stuNum int not null);
      2、create table students(id int auto_increnment primary key,name varchar(22)
-      not null default '',gender bit default 1,pid int not null,foreignkey(pid)
+      not null default '',gender bit default 1,pid int not null,foreign key(pid)
       references class(id));
      示例:select students.name,class.name,class.id from class inner join students
           on class.id=students.pid;

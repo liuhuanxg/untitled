@@ -43,8 +43,8 @@ patten:匹配的正则表达式
 string：要匹配的字符串
 功能：扫描整个字符串，并返回第一个成功的匹配
 '''
-str='good man is sunck !sunck is nice'
-s=re.search('sunck',str)
+str='good man is whisky !whisky is nice'
+s=re.search('whisky',str)
 print(s.group())
 print('-'* 20+'我是换行符'+'_' * 100)
 '''
@@ -55,8 +55,8 @@ string：要匹配的字符串
 功能：扫描整个字符串，并返回结果列表
 
 '''
-str='good man is sunck !Sunck is nice'
-print(re.findall('sunck',str,re.I))
+str='good man is whisky !Whisky is nice'
+print(re.findall('whisky',str,re.I))
 print('-'* 20+'我是换行符'+'_' * 100)
 
 
@@ -77,7 +77,7 @@ print('-'* 20+'我是换行符'+'_' * 100)
 \S              匹配任意的非空白符，效果同[^[空白符]\f\n\r\t]
 
 '''
-print(re.findall('\d','sunck is a good man 6   3   4'))
+print(re.findall('\d','whisky is a good man 6   3   4'))
 s='张三'
 print(re.match(r'\w+',s).group())
 print('-'* 20+'我是换行符'+'_' * 100)
@@ -92,18 +92,18 @@ $               行尾匹配
 
 '''
 
-print(re.search('.*?4$','sunck is a good man 6   3   4',re.S))
-print(re.search('^sunck','sunck is a good man 6   3   4'))
-print(re.search('\Asunck','sunck is a good man 6   3   4'))
-print(re.findall('\Asunck','sunck is a good man 6   3   4\nsunck is a good man 6   3   4',re.M))
-print(re.findall('^sunck','sunck is a good man 6   3   4\nsunck is a good man 6   3   4',re.M))
-print(re.findall('Man\Z','sunck is a good man\nsunck is a good Man',re.M))
-print(re.findall('man$','sunck is a good man\nsunck is a good man',re.M))
+print(re.search('.*?4$','whisky is a good man 6   3   4',re.S))
+print(re.search('^whisky','whisky is a good man 6   3   4'))
+print(re.search('\Awhisky','whisky is a good man 6   3   4'))
+print(re.findall('\Awhisky','whisky is a good man 6   3   4\nwhisky is a good man 6   3   4',re.M))
+print(re.findall('^whisky','whisky is a good man 6   3   4\nwhisky is a good man 6   3   4',re.M))
+print(re.findall('Man\Z','whisky is a good man\nwhisky is a good Man',re.M))
+print(re.findall('man$','whisky is a good man\nwhisky is a good man',re.M))
 
-print(re.search(r'er\b','never'))
-print(re.search(r'er\b','nerve'))
-print(re.search(r'er\B','never'))
-print(re.search(r'er\B','nerve'))
+print(re.search(r'er\b','never'),'b用法1')
+print(re.search(r'er\b','nerve'),'b用法2')
+print(re.search(r'er\B','never'),'b用法3')
+print(re.search(r'er\B','nerve'),'b用法4')
 
 
 '''
@@ -118,7 +118,7 @@ x{m,n}      匹配最少m个x，最多n个x
 x|y         匹配x或者y
 '''
 '''
-print(re.findall(r'(sunck)','sunck is a good man,sunck is a nice man'))
+print(re.findall(r'(whisky)','whisky is a good man,whisky is a nice man'))
 print(re.findall(r'a?','aaa'))         #非贪婪匹配（尽可能少的匹配）
 print(re.findall(r'a*','aaabaaa'))    #贪婪匹配（尽可能多的匹配）
 print(re.findall(r'a+','aaabaaa'))    #贪婪匹配（尽可能多的匹配）
@@ -126,7 +126,7 @@ print(re.findall(r'a{3}','aaabaaa'))
 print(re.findall(r'a{2,}','aaabaa'))
 print(re.findall(r'a{,4}','aaabaa'))
 print(re.findall(r'a{3,6}','aaabaaa'))
-print(re.findall(r'((s|S)unck)','sunck--Sunck'))
+print(re.findall(r'((s|S)unck)','whisky--Whisky'))
 '''
 
 '''
@@ -159,7 +159,95 @@ re 模块深入
 
 字符串切割
 '''
-str='sunck   is a good man'
+str='whisky   is a good man'
 print(str.split(' '))
 s=re.split(r' +',str)
 print(s)
+
+
+content = '{name:"zhangsan",age:"10",hobby:["basktball","football","read"]}'
+pattern = re.compile(r'.*?"(.*?)".*?"(.*?)".*?')
+match = pattern.search(content)
+print(match)
+print(match.group(1))
+print(match.group(2))
+
+
+# finditer()：全文匹配，多次匹配，返回一个包含匹配结果的迭代器。
+
+# pattern.finditer(
+# 	'待匹配的字符串'（必须指定）,
+# 	start（匹配的开始位置）,
+# 	end（匹配的结束位置）
+# )
+# 返回值为迭代器iterator
+
+import re
+
+pattern = re.compile(r'\d+')
+content1 = 'hello 123456 789'
+content2 = 'one1two2three3four4'
+result_iter1 = pattern.finditer(content1)
+result_iter2 = pattern.finditer(content2,0,7)
+print(type(result_iter1))
+print(type(result_iter2))
+for m1 in result_iter1:
+    print('matching string:{},position:{}'.format(m1.group(),m1.span()))
+print('-----------------------------------------')
+for m2 in result_iter2:
+    print('matching string:{},position:{}'.format(m2.group(), m2.span()))
+
+# sub()：用指定的字符串，替换正则表达式匹配到的目标字符串的内容。
+
+# pattern.sub(
+#     repl（替换成什么）,
+#     content（待替换内容）,
+#     count（替换次数，可不指定，默认替换所有）
+# )
+
+# repl可以是字符串也可以是函数。
+#
+# repl是字符串时，局限性是只能替换为固定的内容，不灵活。
+
+import re
+
+p = re.compile(r'(\w+) (\w+)')
+s = 'hello 123,hello 456'
+
+print(p.sub('ssss',s))
+print(p.sub(r'\2 \1',s))    # 引用分组
+
+# repl是函数时，就很灵活了。
+#
+# 当repl是函数的时候，这个函数必须满足以下要求：
+#
+# 函数必须携带一个参数，这个参数是一个match对象。
+
+def func(match):
+    '''
+    对match对象的操作。
+    '''
+    print(match.group())
+
+# 当在sub方法中传入这个参数时，这个match对象其实就是用正则匹配到的每一个match对象。
+#
+# 这个函数是有返回值的，返回值必须是一个字符串，将来是用这个字符串进行替换目标字符串的。
+
+import re
+
+p = re.compile(r'(\w+) (\w+)')
+s = 'hello 123,hello 456'
+def func(m):
+    return 'hi' + ' ' + m.group(2)
+print(p.sub(func,s))
+print(p.sub(func,s,1))
+
+# p = re.compile(r'\d+')
+# content = 'zhangsan:3000,lisi:4000'
+# def add(match):
+#     return str(int(match.group())+2000)
+# print(p.sub(add,content))
+
+str1 = 'abbbcc'
+parttent = re.compile(r'(ab).*(c)')
+print(parttent.findall(str1))

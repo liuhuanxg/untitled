@@ -6,6 +6,7 @@
 @user：python-刘欢
 """
 import os
+path = os.path.join(os.getcwd(), 'download/demo5-百度翻译.html')
 import requests
 import json
 
@@ -16,7 +17,7 @@ url = 'https://fanyi.baidu.com/langdetect'
 data = {
     'query':'hello python'
 }
-path = os.path.join(os.getcwd(), 'download/demo5-百度翻译.html')
+
 response = requests.post(url=url,data=data,headers=headers)
 content = json.loads(response.content.decode('utf-8'))
 fm = content['lan']

@@ -1,0 +1,12 @@
+十、触发器
+    trigger:是一个特殊的存储过程（类似于函数），不需要手动调用，由数据库的增、删、改操作自动触发
+    创建触发器：触发时机：after，before
+        create trigger 触发器名字 触发时机 触发事件 on 表名 for each row begin
+        SQL 语句 1
+        SQL 语句 2
+        end;
+    逻辑删除（备份）：
+    表a   表b
+    当删除表a中的数据时，将这个数据备份到b表
+    
+
