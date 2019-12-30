@@ -1,11 +1,3 @@
-#coding:utf-8
-"""
-NAME:01.手写数字识别.py
-Author:刘立东
-Contect:1147024853@qq.com
-Date:2018-11-14
-Desc:
-"""
 from numpy import *
 import numpy as np
 from os import listdir

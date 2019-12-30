@@ -156,4 +156,5 @@
      3、表A right join 表B：
          表A与表B匹配的行会出现在结果集中，外加表B独有的数据，
          未对应的数据使用null填充
-
+coalesce(字段,0)将null字段填充为0
+select name,coalesce(age,0) from user;

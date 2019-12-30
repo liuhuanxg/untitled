@@ -5,3 +5,7 @@ np.set_printoptions(threshold=np.NaN)
 plt.rcParams['font.sans-serif']='SimHei'
 #显示-号
 plt.rcParams['axes.unicode_minus']=False
+
+#解决报错没有sans-serif
+print(matplotlib.matplotlib_fname())
+print(matplotlib.get_cachedir())

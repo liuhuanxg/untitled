@@ -41,10 +41,18 @@ print(arr4.shape)
 print(arr4.reshape(-1,1))
 
 """
-str1=input("请输入：")
-print("您的输入是：",str1)
+# str1=input("请输入：")
+# print("您的输入是：",str1)
 #15、简述聚类和分类的区别
 
 
 
 #16、卷积神经网络分为几层，每一层的作用是什么？
+d = {}
+for i in range(26):
+    d[chr(i+ord("A"))] = chr((i+13)%26+ord("A"))
+
+print(d)
+for c in "Python":
+    print(d.get("P","P"))
+    # print(d.get(c,c),end="")
