@@ -28,20 +28,20 @@ print(title_list)
 
 print('-'*200)
 
-# 所有img 存在@ 属性 // string() 运算符
-img_list = sele.xpath('//div[@class="haijingfang_center"]//img[@alt]/@src')
-print(img_list)
-all_content = sele.xpath('string(//div[@class="haijingfang_center"])')
+# # 所有img 存在@ 属性 // string() 运算符
+# img_list = sele.xpath('//div[@class="haijingfang_center"]//img[@alt]/@src')
+# print(img_list)
+# all_content = sele.xpath('string(//div[@class="haijingfang_center"])')
 # print(all_content)
 #
 # content2 = sele.xpath('//div[@class="haijingfang_center"]')
-# # print(content2)
-# # print(content2[0].xpath('string(..)'))
-
+# print(content2)
+# print(content2[0].xpath('string(..)'))
+#
 # print(sele.xpath('string(/html/body)'))
 # content2 = sele.xpath('//div[@class="pinzhibaozhang_center"]')
 # print(content2[0].xpath('string(..)'))
-# 获取子、孙标签内容
+# # 获取子、孙标签内容
 
 
 # 运算符
