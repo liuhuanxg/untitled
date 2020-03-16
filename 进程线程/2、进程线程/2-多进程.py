@@ -38,7 +38,7 @@ def main():
     start=time()
     p1=Process(target=download_task,args=("Python从入门到住院.pdf",))
     p1.start()
-    p2 = Process(target=download_task,args=('Peking Hot.avi',))
+    p2 = Process(target=download_task,args=('Peking.pdf',))
     p2.start()
     p1.join()
     p2.join()

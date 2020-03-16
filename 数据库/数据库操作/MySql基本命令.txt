@@ -158,3 +158,4 @@
          未对应的数据使用null填充
 coalesce(字段,0)将null字段填充为0
 select name,coalesce(age,0) from user;
+

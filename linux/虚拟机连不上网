@@ -1,5 +1,7 @@
 1、编辑-->网络适配器调为：桥接模式或NAT嫁接模式
-2、修改/etc/sysconfig/network-script下的配置文件
+2、修改/etc/sysconfig/network-scripts下的配置文件
     BOOTPROTO="dhcp"
     ONBOOT="yes"
 
+分 小时 几号 月份 星期
+* * * * *
