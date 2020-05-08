@@ -151,24 +151,24 @@ return的两个作用：1.返回内容 2.结束此方法
 当递归边界成立时，递归后退，不成立时递归前进
 '''
 # 阶乘
-# def jiecheng(n):
-#     if n==1:
-#         return 1
-#     else:
-#         return n*jiecheng(n-1)
-# x=jiecheng(6)
-# print(x)
+def jiecheng(n):
+    if n==1:
+        return 1
+    else:
+        return n*jiecheng(n-1)
+x=jiecheng(6)
+print(x)
 
 # 斐波那契序列
 # 递归
-# def fib(n):
-#     if n==1 or n==2:
-#         return 1
-#     else:
-#         return fib(n-1)+fib(n-2)
-# print(fib(6))
-# for n in range(1,11):
-#     print(fib(n))
+def fib(n):
+    if n==1 or n==2:
+        return 1
+    else:
+        return fib(n-1)+fib(n-2)
+print(fib(6))
+for n in range(1,11):
+    print(fib(n))
 
 # 循环
 # def fib(n):
@@ -267,9 +267,9 @@ fun(la)将la真正的传过去，修改后fun外部的la也会受影响
 # hs(b)
 # print(b)
 
-'''
-全局 局部
-'''
+# '''
+# 全局 局部
+# '''
 # def hs():
 #     b=3
 #     print(a)
@@ -277,17 +277,17 @@ fun(la)将la真正的传过去，修改后fun外部的la也会受影响
 # a=6
 # hs()
 # print(b)    # 报错 name 'b' is not defined
-
-# 局部变量与全局变量同名，函数内以局部变量为准
+#
+# # 局部变量与全局变量同名，函数内以局部变量为准
 # def hs():
 #     a=7
 #     print(a)
 # a=9
 # hs()
 # print(a)
-
-# 全局变量和局部变量，不可共存
-# 局部变量有，不去外面找
+#
+# # 全局变量和局部变量，不可共存
+# # 局部变量有，不去外面找
 # def hs():
 #     # print(a)    # 报错 local variable 'a' referenced before assignment
 #     a=9
@@ -295,19 +295,19 @@ fun(la)将la真正的传过去，修改后fun外部的la也会受影响
 # a=10
 # hs()
 # print(a)
-
-# 原因同上
+#
+# # 原因同上
 # def hs():
 #     a+=3    # 报错 local variable 'a' referenced before assignment
 #     print(a)
 # a=10
 # hs()
-
-'''
-global关键字可以将局部变量变成一个全局变量
-nonlocal关键字可以修改外层（非全局）变量
-'''
-# global关键字
+#
+# '''
+# global关键字可以将局部变量变成一个全局变量
+# nonlocal关键字可以修改外层（非全局）变量
+# '''
+# # global关键字
 # def hs():
 #     global a
 #     a+=10
@@ -315,21 +315,21 @@ nonlocal关键字可以修改外层（非全局）变量
 # a=20
 # hs()
 # print('函数外部：%d' % a)
-
+#
 # def hs():
 #     global a
 #     a=10
 # hs()
 # print(a)
-
+#
 # def hs():
 #     global a
 #     a=10
 # print(a)    # 报错 name 'a' is not defined
 # hs()
 # print(a)
-
-# nonlocal关键字
+#
+# # nonlocal关键字
 # a=9
 # def out():
 #     def inside():
@@ -338,7 +338,7 @@ nonlocal关键字可以修改外层（非全局）变量
 #         print(a)
 #     inside()
 # out()
-
+#
 # def out():
 #     a=9
 #     def inside():
@@ -348,7 +348,7 @@ nonlocal关键字可以修改外层（非全局）变量
 #     inside()
 #     print('我是外部',a)
 # out()
-
+#
 # a=9
 # def out():
 #     a=7
@@ -511,49 +511,49 @@ map()--映射  函数会依次作用在迭代内容的每一个元素上进行�
 第一个参数--函数名（返回的是加工过的值）
 第二个参数--序列
 '''
-# def hs(x):
-#     return x*x
-# a=[1,2,3]
-# b=map(hs,a)
-# print(b)    # <map object at 0x0000000002142860>
-# # for x in b:
-# #     print(x)
-# b=list(b)
-# print(b)
+def hs(x):
+    return x*x
+a=[1,2,3]
+b=map(hs,a)
+print(b)    # <map object at 0x0000000002142860>
+# for x in b:
+#     print(x)
+b=list(b)
+print(b)
 
 '''
 filter()--过滤序列  过滤掉不符合条件的元素，返回由符合条件元素组成的可迭代对象
 第一个参数--函数名（返回True或False）
 第二个参数--序列
 '''
-# def gl(a):
-#     if a%3==0 or a%7==0:
-#         return True
-#     else:
-#         return False
-# a=[1,2,3,4,5,6,7,8,9]
-# b=filter(gl,a)
-# print(b)
-# print(list(b))
+def gl(a):
+    if a%3==0 or a%7==0:
+        return True
+    else:
+        return False
+a=[1,2,3,4,5,6,7,8,9]
+b=filter(gl,a)
+print(b)
+print(list(b))
 
 '''
 zip()--接收任意多个可迭代对象作为参数
 将对象中对应元素，打包成一个元组，然后返回一个可迭代的zip对象
 若长度不同，以最短的为准
 '''
-# a=[1,2,3]
-# b=['a','b','c','d']
-# c=zip(a,b)
-# print(c)
-# for x in c:
-#     print(x)
+a=[1,2,3]
+b=['a','b','c','d']
+c=zip(a,b)
+print(c)
+for x in c:
+    print(x)
 
-# a=[1,2,3]
-# b=['a','b','c']
-# def hs(x):
-#     return {x[0]:x[1]}
-# x=map(hs,zip(a,b))
-# print(list(x))
+a=[1,2,3]
+b=['a','b','c']
+def hs(x):
+    return {x[0]:x[1]}
+x=map(hs,zip(a,b))
+print(list(x))
 
 '''
 lambda--匿名函数
