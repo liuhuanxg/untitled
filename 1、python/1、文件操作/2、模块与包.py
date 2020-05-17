@@ -13,6 +13,41 @@ if __name__ == '__main__':
 """
 #打乱一个排好序的对象：
 import random
-alist=[1,2,3,4,5]
+alist=[1, 2, 3, 4, 5]
 random.shuffle(alist)
 print(alist)
+
+"""
+import copy
+list1 = [1, [5, 6, [7,8]]]
+list2 = copy.copy(list1)
+list3 = copy.deepcopy(list1)
+list1[0]=0
+print(list1, list2)
+list1[1][0]=0
+print(list1, list2)
+print(list3,list1)
+"""
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+lst2 = list(map(lambda x:x**2,lst))
+print(lst2)
+
+lst3 = list(filter(lambda x:x%2==0,lst))
+print(lst3)
+from functools import reduce
+
+
+def func(x,y):
+    return x+y
+lst4 = reduce(func,[],0)
+print(lst4)
+
+
+lst2 = [3, 7, 9, 5, 4, 10]
+lst2.sort()
+print(lst2)
+
+lst3 = [3, 7, 9, 5, 4, 10]
+lst4 = sorted(lst3)
+print(lst4)

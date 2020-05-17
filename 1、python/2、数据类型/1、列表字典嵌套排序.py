@@ -48,9 +48,9 @@ import dis
 #
 # main()
 
-# from sys import getsizeof,getrefcount
+from sys import getsizeof,getrefcount
 # a = [1,2]
-
+#
 # print(a)
 # print(a)
 # print(a)
@@ -59,38 +59,38 @@ import dis
 # print(getrefcount(a))   #查看某个变量的引用次数
 
 
-# list1=[]
-# for i in range(5):
-#     def func(x):
-#         return i**x
-#     list1.append(func)
-
-# print(i)
-# print(list1[0](2))
-# print(list1[1](2))
-# print(list1[2](2))
+list1=[]
+for i in range(5):
+    def func(x):
+        return i**x
+    list1.append(func)
+i = 6
+print(i)
+print(list1[0](2))
+print(list1[1](2))
+print(list1[2](2))
 
 list2=[]
 
-# for i in range(5):
-#     def func(x,i=i ):
-#         return i ** x
-#     list2.append(func)
-# print(i)
-# print("list2",list2)
-# print(list2[0](2))
-# print(list2[2](2))
+for i in range(5):
+    def func(x,i=i ):
+        return i ** x
+    list2.append(func)
+print(i)
+print("list2",list2)
+print(list2[0](2))
+print(list2[2](2))
 
-# list3=[]
-# def func(x,i=3):
-#     print(i)
+list3=[]
+def func(x,i=3):
+    print(i)
+
+list3.append(func)
+print(list3[0])
 #
-# list3.append(func)
-# print(list3[0])
-#
-# la=lambda x:x
-# print(la,id(la))
-# print(abs)
+la=lambda x:x
+print(la,id(la))
+print(abs)
 
 
 

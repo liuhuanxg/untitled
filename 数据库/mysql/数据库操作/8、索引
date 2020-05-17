@@ -14,8 +14,7 @@
         create index index_name on table_name(username(length));
         如果是char或varchar类型，length可以小于字段实际长度;如果是BLOB和TEXT类型，必定要指定length
         create只能创建两种索引：普通索引和唯一索引
-        create index index_name on table_name (column_list);
-        create unique index index_name on table_name (columb_list);
+.        create unique index index_name on table_name (columb_list);
         不能使用create index创建primary key索引
     (3)删除索引
         删除索引可以使用alter table 或 drop index语句来实现，drop index可以在alter table内部作为一条语句处理
@@ -23,6 +22,14 @@
         alter table table_name drop index index_name;
         alter table table_name drop primary key;
         一个表只有一个primary key索引，如果没有primary key，有多个unique索引时，则MySQL将删除掉第一个unique索引。
+
+(0)、索引的分类：
+    SQL server索引类型有：唯一索引，主键索引，聚集索引，非聚集索引
+    MySQL索引的类型有：唯一索引，主键(聚集索引)，非聚集索引，全文索引
+    聚集索引：也叫聚簇索引
+    定义：数据行的屋里序与列值，(一般是主键的那一列)的逻辑顺序相同，一个表中只能拥有一个聚集索引。
+
+
 
 (1)、索引有哪些数据结构？
     Hash和B+
@@ -47,7 +54,7 @@
     B树的一个节点可以存储多个元素，相对于完全平衡二叉树的整体的树高降低了，磁盘IO效率提高了。
     而B+树是B树的升级版，只是把非叶子节点荣冗余一下，这么做的好处是为了提高范围查找的效率。提高的原因就是会有指针指向下一个节点的叶子节点。
     总结：Mysql选用B+树这种数据结构作为索引，可以提高查询索引时的磁盘IO效率，并且可以提高范围查询的效率，并且B+树的元素也是有序的。
-    ·一个B+树的节点到底有多少个元素最合适有了解吗？或者一个节点到底多大合适？
+(3)、一个B+树的节点到底有多少个元素最合适有了解吗？或者一个节点到底多大合适？
     B+树中一个节点为一页或者页的倍数最为合适。
     ·为什么？
     因为如果一个节点的大小小于1页，那么读取这个节点的时候其实也会读出一页，造成资源的浪费。如果一个节点的数据大于1页，比如1.2页，那么读取这个节点的时候会读出2页，也会造成资源的浪费。
@@ -72,7 +79,7 @@
     回到主键索引树搜索的过程，就是回表。不过也有方法避免回表，就是覆盖索引。
     什么是覆盖索引？
     比如在select *查询所有的，如果只查询到ID，这是name字段的索引上已经有了，就不需要回表了。覆盖索引可以减少树的搜索次数，提升性能，他也是我们在实际开发过程中经常用来优化查询效率的手段。很多联合索引的建立，就是为了支持索引覆盖，特定的业务能极大的提升效率。
-    索引的最左匹配原则知道吗？
+(4)、索引的最左匹配原则知道吗？
     最左匹配原则：
     ·索引可以简单如一个列（a），也可以复杂如多个列（a,b,c,d），即联合索引。
     ·如果是联合索引，namekey也由多个列组成，同时索引只能用于查找key是否存在（相等），遇到范围查询(>,<,between,like左匹配)等就不能进一步匹配了，后续退化为线性查找。

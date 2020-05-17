@@ -20,7 +20,7 @@ class User(base):
     #表名
     __tablename__="user"
     #字段
-    id = sqlalchemy.Column(sqlalchemy.Integer,primary_key=True)
+    id = sqlalchemy.Column( sqlalchemy.Integer,primary_key=True)
     name = sqlalchemy.Column(sqlalchemy.String(32))
     age = sqlalchemy.Column(sqlalchemy.Integer)
 

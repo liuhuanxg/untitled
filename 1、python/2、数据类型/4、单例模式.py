@@ -40,16 +40,17 @@ print(foo1 is foo2)
 #第三种：元类，元类是用于创建对象的类，类对象创建实例对象时一定要调用call方法时候保证始终创建一个实例，type是python的元类
 
 class Singleton(type):
-    def __call__(cls,*args,**kwargs):
+
+    def __call__(cls):
         if not hasattr(cls,'_instance'):
-            cls._instance = super(Singleton,cls).__call__(*args,**kwargs)
+            cls._instance = super().__call__()
         return cls._instance
 class Foo(object):
     __metaclass__ = Singleton
 
 foo1 = Foo()
 foo2 = Foo()
-print(foo1 is foo2,id(foo1),id(foo2)) #True
+print(foo1 is foo2,id(foo1),id(foo2),111)
 
 
 # class Father():
@@ -76,6 +77,8 @@ class Foo(Father):
 
 f1=Foo()
 f2=Foo()
+f3 = Father
+f4 = Father
 print(id(f1))
 print(id(f2))
 print(f1 is f2)

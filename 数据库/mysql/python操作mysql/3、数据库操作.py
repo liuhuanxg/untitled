@@ -17,7 +17,7 @@ db = pymysql.connect(host,user,password,database)
 cursor = db.cursor()
 
 #4、编写sql语句
-sql1 = 'create database python0805 charset=utf8;'
+sql1 = 'create database python charset=utf8;'
 #5、执行sql语句
 cursor.execute(sql1)
 sql = 'show databases'
@@ -49,7 +49,7 @@ print(cursor.fetchall())    #查询所有数据
 # cursor.execute(sql6)
 # db.commit()
 
-sql7 = 'drop database python0805;'
+sql7 = 'drop database python;'
 cursor.execute(sql7)
 db.commit()
 
