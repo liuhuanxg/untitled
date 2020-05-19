@@ -16,14 +16,6 @@ from abc import ABCMeta, abstractmethod
 
 State = Enum("state","new running sleeping restart zobie")
 
-class User:
-    pass
-
-class Process:
-    pass
-
-class File:
-    pass
 
 class Server(metaclass=ABCMeta):
     @abstractmethod
@@ -82,11 +74,6 @@ class ProcessServer(Server):
         """检查用户权限和生成PID等"""
         print("trying to create the process '{}' for user '{}'".format(name,user))
 
-class WindowServer:
-    pass
-
-class NetworkServer:
-    pass
 
 class OperatingSystem:
     """外观"""

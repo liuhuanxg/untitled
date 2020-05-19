@@ -30,3 +30,8 @@
 #         {"words":"c","count":{"0":20,"1":10,"2":60,"3":10,"4":5}},
 #     ]
 #     print(guess_words(words, hash_table))
+
+
+str1 = "11_%s"
+for i in range(4):
+    print(str1 % i)

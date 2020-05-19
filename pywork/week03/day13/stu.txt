@@ -1,5 +1,0 @@
-name:zhangsan,age:18,sex:男,num:001
-name:lisi,age:28,sex:男,num:002
-name:ww,age:18,sex:男,num:003
-name:zhaoliu,age:48,sex:男,num:004
-name:zhangsan,age:43,sex:男,num:005

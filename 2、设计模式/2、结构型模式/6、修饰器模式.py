@@ -36,8 +36,8 @@ def fibonacci(n):
 if __name__ == "__main__":
     from timeit import Timer
     measure = [
-        {'exec':'fibonacci(100)', 'import':'fibonacci', 'func':fibonacci},
-        {'exec':'nsum(200)', 'import':'nsum', 'func':nsum}
+        {'exec':'fibonacci(3)', 'import':'fibonacci', 'func':fibonacci},
+        {'exec':'nsum(2)', 'import':'nsum', 'func':nsum}
     ]
     for m in measure:
         t = Timer("{}".format(m["exec"]),"from __main__ import {}".format(m["import"]))
