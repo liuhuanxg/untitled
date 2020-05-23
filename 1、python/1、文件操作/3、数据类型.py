@@ -40,3 +40,15 @@ l1 = ['b','c','d','c','a','a']
 l2 = list(set(l1))
 l2.sort(key=l1.index)
 print(l2)
+
+
+f1 = lambda x,y:x+y
+print(type(f1),f1)
+
+f2 = lambda x,y:x+y
+print(type(f2),f2)
+def func():
+    pass
+
+f3 = func
+print(type(f3),f3)

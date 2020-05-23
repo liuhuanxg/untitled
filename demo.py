@@ -31,7 +31,26 @@
 #     ]
 #     print(guess_words(words, hash_table))
 
+from functools import wraps
+def outer(func):
+    @wraps(func)
+    def inner(*args,**kwargs):
+        result = func(*args,**kwargs)
+        return result
+    return inner
+@outer
+def func():
+    try:
+        return 1/0
+    except Exception as error:
+        return error
+print(outer(func)())
 
-str1 = "11_%s"
-for i in range(4):
-    print(str1 % i)
+
+# from selenium import webdriver
+# driver_path = "c:/"
+# driver = webdriver.Chrome(driver_path)
+# driver.get("https://*****")
+# driver.maximize_window() # 浏览器最大化
+# driver.find_element_by_id("username").send_keys("Zhangsan")
+

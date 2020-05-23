@@ -17,7 +17,7 @@ def get_lines(fp):
                 tmp = i+1
 
 if __name__=="__main__":
-    for i in get_lines("fp_some_huge_file"):
+    for i in get_lines("2、模块与包.py"):
         print(i)
 
 

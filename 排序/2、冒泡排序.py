@@ -32,8 +32,7 @@ for i in range(1,len(list1)):
 
 alist = [9, 6, 7, 5, 10, 3]
 def bubble_sort(alist):
-
-    for i in range(1,len(alist)):
+    for i in range(1, len(alist)):
         flag = False
         for j in range(len(alist)-i):
             if alist[j]>alist[j+1]:

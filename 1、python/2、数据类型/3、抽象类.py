@@ -23,7 +23,7 @@ class Man(Person,Hero):
     def sleep(self):
         print("人睡觉")
 
-
+p=Person()
 list2=[23]
 list3=sorted(list2)
 m=Man()

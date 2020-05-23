@@ -19,10 +19,10 @@ d1['key1']=4
 print(d1)
 
 d2={"key1":"v1","key2":"v2"}
-print(d2)
+print(d2,id(d2))
 
-dict3 = dict(key1="33",key2="44")
-print(dict3)
+dict3 = dict(key1="v1",key2="v2")
+print(dict3,id(dict3))
 
 dict4=dict()
 print(type(dict4))
