@@ -9,7 +9,7 @@
 　　在MySQL数据库中，支持上面四种隔离级别，默认的为Repeatable read (可重复读)；而在Oracle数据库中，只支持Serializable (串行化)级别和Read committed (读已提交)这两种级别，其中默认的为Read committed级别。
 
 2、在MySQL数据库中查看当前事务的隔离级别：
-select @@tx_is
+select @@tx_isolation;
 
 3、在数据库事务中设置事务的隔离级别：
 set [glogal | session] transaction isolation level 隔离级别

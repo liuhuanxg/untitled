@@ -27,7 +27,7 @@ class Computer:
     def execute(self):
         return 'executes a program'
 
-#接着是想要什么
+# 接着是想要什么
 class Synthesizer:
     def __init__(self, name):
         self.name = name
