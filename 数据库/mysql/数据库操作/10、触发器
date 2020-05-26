@@ -8,5 +8,5 @@
     逻辑删除（备份）：
     表a   表b
     当删除表a中的数据时，将这个数据备份到b表
-    
+    create trigger trigger_name trigger_time trigger_event on table_name for each row trigger_stmt;
 
