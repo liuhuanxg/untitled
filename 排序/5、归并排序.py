@@ -17,7 +17,8 @@
 时间复杂度平均为O(nlog2n),最好为O(nlog2n),最坏O(nlog2n)，空间复杂度为O(n)，稳定排序
 """
 
-"""def merge_sort(data):
+"""
+def merge_sort(data):
     half_index = int(len(data)/2)  # 将数据拆分
 
     alist1 = data[:half_index]
@@ -76,8 +77,6 @@ def merge_sort(data):
         d0 = d0_mid
 
     return d0[0]
-
-
 
 
 if __name__ == "__main__":

@@ -45,3 +45,4 @@ print(max(dict2,key=lambda x:dict2[x]))
 
 list8 = []
 print(max(list8,default=1))
+

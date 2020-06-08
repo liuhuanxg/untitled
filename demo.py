@@ -35,15 +35,15 @@ from functools import wraps
 def outer(func):
     @wraps(func)
     def inner(*args,**kwargs):
-        result = func(*args,**kwargs)
-        return result
+        try:
+            result = func(*args,**kwargs)
+            return result
+        except Exception as e:
+            print(e)
     return inner
 @outer
 def func():
-    try:
-        return 1/0
-    except Exception as error:
-        return error
+    return 1/0
 print(outer(func)())
 
 

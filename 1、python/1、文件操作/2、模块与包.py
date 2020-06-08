@@ -1,6 +1,6 @@
 import datetime
 #判断一个日期是这一年的第几天
-"""
+
 def dayofyear():
     year = input("请输入年份: ")
     month = input("请输入月份: ")
@@ -10,7 +10,7 @@ def dayofyear():
     return (date1-date2).days+1
 if __name__ == '__main__':
     print(dayofyear())
-"""
+
 #打乱一个排好序的对象：
 import random
 alist=[1, 2, 3, 4, 5]
