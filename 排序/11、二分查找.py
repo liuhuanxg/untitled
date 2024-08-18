@@ -1,4 +1,4 @@
-#-*-coding:utf-8 -*-
+# -*-coding:utf-8 -*-
 """
 @project:untitled
 @File: 11、二分查找.py
@@ -17,20 +17,23 @@
         如果7比待比较的值小，则从[8,9,10]中取值
     依次向下进行直到起始值大于终止值时结束    
 """
+
+
 # 递归方法查找
-def binary_chop(lst,number):
-    if len(lst)<1:
+def binary_chop(lst, number):
+    if len(lst) < 1:
         return False
     last = len(lst)
     mid = last // 2
     if lst[mid] > number:
-        lst = lst[0:mid-1]
+        lst = lst[0:mid - 1]
         return binary_chop(lst, number)
     elif lst[mid] < number:
-        lst = lst[mid+1:]
+        lst = lst[mid + 1:]
         return binary_chop(lst, number)
     else:
         return True
+
 
 # 非递归方法
 """

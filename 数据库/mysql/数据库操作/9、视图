@@ -10,7 +10,7 @@
 	视图的缺点
 		性能差：查询的效率偏低，每次查询时都要转换
 		修改限制：对于复杂视图来说（多表查询）修改是非常麻烦的
-	视图的使用
+	视图的使用：在视图中对数据的增删改查与在原表中都一样
 		创建视图：  create  view  视图名   as   select   语句;
 		查询视图
 			show  create   view  视图名;
@@ -18,6 +18,5 @@
 		    show table status where comment="view";
 		删除视图
 			drop  view  视图名;
-		在视图中对数据的增删改查与在原表中都一样
 		查询视图的内容：
-		select * from 视图;
+		    select * from 视图;

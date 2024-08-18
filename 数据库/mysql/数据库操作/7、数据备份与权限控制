@@ -9,7 +9,7 @@
             格式：mysqldump -uroot -p 库名>路径/name.sql
             例：mysqldump -uroot -p test>./Desktop/test.sql
     数据的导入：
-​		mysql  -uroot  -p 库名 < 备份文件地址.sql
+        mysql  -uroot  -p 库名 < 备份文件地址.sql
 
 八、权限管理
     用户      使用者
@@ -29,11 +29,11 @@
         3、给用户授权允许远程连接
             格式：grant 权限 on 库名.表名 to 用户名@"地址";
             权限分类：
-            select insert update delete create
+                select insert update delete create
             给wangwu用户添加查询权限
-            例：grant select on test.major to wangwu@'localhost';
+                例：grant select on test.major to wangwu@'localhost';
             添加所有权限
-            create user xiaoliu@'%' identified by '123456'
-            grant all on *.* to xiaoliu@'%';
+                create user xiaoliu@'%' identified by '123456'
+                grant all on *.* to xiaoliu@'%';
         4、删除用户
             drop user "用户名"@"来源地";

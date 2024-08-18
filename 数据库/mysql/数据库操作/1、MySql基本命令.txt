@@ -1,25 +1,25 @@
- 一、基本命令
+一、基本命令
     1、启动服务
         说明：以管理员身份运行cmd
         格式：net start  服务名称
         示例：net start  mysql
     2、停止服务
-         说明：以管理员身份运行cmd
-         格式：net  stop   服务名称
-         示例：net  stop   mysql
+        说明：以管理员身份运行cmd
+        格式：net  stop   服务名称
+        示例：net  stop   mysql
     3、连接数据
-          格式：mysql -hlocalhost -u   用户名   -p  -P3306
-          示例：mysql  -u   root     -p
-          输入密码（安装时设置的）
+        格式：mysql -hlocalhost -u   用户名   -p  -P3306
+        示例：mysql  -u   root     -p
+        输入密码（安装时设置的）
     4、退出登录（断开连接）
-           格式：quit  或  exit;
+        格式：quit  或  exit;
     5、查看版本(连接后执行的)
-            示例：select  version();
+        示例：select  version();
     6、显示当前时间（连接后可以执行）
-            示例：select now();
+        示例：select now();
     7、远程连接
-            格式：mysql -h ip地址  -u   用户名    -p
-            输入密码
+        格式：mysql -h ip地址  -u   用户名    -p
+        输入密码
     8.常见的字段约束
         Unsigned       无符号  一般给数值型的字段添加
                         如果添加代表当前字段只能存正数
@@ -39,21 +39,25 @@
 三、表操作：
     1、查看库中所有表：show tables;
     2、创建表：
-           格式：create table 表名(字段及类型); 表名如果是关键字如show需要加反引号 ``
-           示例：create table  student(id int auto_increment primary key,name varchar(66) not null,
-                 age int not null,gender bit default 1,address varchar(20),isDelete bit default 0 );
-           说明：auto_increment代表自增长，not null表示不为空,isDelete 字段代表是否删除了
+       格式：create table 表名(字段及类型); 表名如果是关键字如show需要加反引号 ``
+       示例：create table  student(id int auto_increment primary key,name varchar(66) not null,
+             age int not null,gender bit default 1,address varchar(20),isDelete bit default 0 );
+       说明：auto_increment代表自增长，not null表示不为空,isDelete 字段代表是否删除了
     3、删除表：drop table 表名;
     4、查看表结构：desc 表名;
     5、查看建表语句：show create table 表名;
-    6、重命名表名：1、rename table  表名1 to  表名2;
-                   2、alter table 表名1 rename  as 表名2;
-    7、修改表：alter table 表名 add、drop、change  字段名  类型;
-               alter table teachers add phone int(11); 添加电话字段 （可以使用after，不能使用before）
-               alter table teachers change phone name varchar(11); 修改phone —> name
-               alter table teachers drop name;删除(name)
-       修改字段类型：alter table 表名 modify 字段名 类型;
-               alter table teachers modify name varchar(12);
+    6、重命名表名：
+        1、rename table  表名1 to  表名2;
+        2、alter table 表名1 rename  as 表名2;
+    7、修改表：
+        修改表字段：
+            alter table 表名 add、drop、change  字段名  类型;
+            alter table teachers add phone int(11);             添加电话字段 （可以使用after，不能使用before）
+            alter table teachers change phone name varchar(11); 修改phone —> name
+            alter table teachers drop name;                     删除(name)
+        修改字段类型：
+            alter table 表名 modify 字段名 类型;
+            alter table teachers modify name varchar(12);
     8、修改表的编码格式
 		alter table students CHARSET=GBK;
 	9、修自增值
@@ -77,65 +81,65 @@
        a、查询表中全部数据：select * from  表名;
 五、查
     1、基本语法：
-           格式：select * from 表名;
-           说明：select  后跟要查询的内容(字段名)，*代表查询全部，from 代表数据来源于哪张表
-           示例：select name,id from student;
+       格式：select * from 表名;
+       说明：select  后跟要查询的内容(字段名)，*代表查询全部，from 代表数据来源于哪张表
+       示例：select name,id from student;
     2、消除重复行:
-            在select跟后面字段中间使用distinct可以消除重复的行
-            示例：select distinct name from student;
+        在select跟后面字段中间使用distinct可以消除重复的行
+        示例：select distinct name from student;
     3、条件查询
-            between 前后都会包含
-            a、语法：select * from 表名 where 条件;
-            b、比较运算符：+,-,*,/,=,!=,<,>,%
-               示例：select * from 表名 where id<8;
-            c、逻辑运算符:
-            and     并且    select * from student where id>7 and gender=0;
-            or      或者    select * from student where id>7 or gender=0;
-                    说明：只要满足任意条件都会匹配出来
-            not     不是    select * from student where id>7 not gender=0;
-            d、模糊查询：
-                 示例：select * from student where name like '%a%';（只要包含a就会匹配出来）
-                 说明：%代表包括空白在内的任意字符，_代表一个字符，
-            e、范围查询：
-                 示例：select * from student where id in (1,2,6,8);
-                 select * from student where id between 6 and 8;
-            f、空判断:
-                insert into student(name,age) values('特朗普',70);
-                说明：null与''不同
-                select * from student where address is null;(或者is not)
-            g、优先级
-                小括号，not  比较运算符，逻辑运算符
-                and 比 or 优先级高，如果同时出现并希望先选or，
-                需要结合()使用
+        between 前后都会包含
+        a、语法：select * from 表名 where 条件;
+        b、比较运算符：+,-,*,/,=,!=,<,>,%
+           示例：select * from 表名 where id<8;
+        c、逻辑运算符:
+        and     并且    select * from student where id>7 and gender=0;
+        or      或者    select * from student where id>7 or gender=0;
+                说明：只要满足任意条件都会匹配出来
+        not     不是    select * from student where id>7 not gender=0;
+        d、模糊查询：
+             示例：select * from student where name like '%a%';（只要包含a就会匹配出来）
+             说明：%代表包括空白在内的任意字符，_代表一个字符，
+        e、范围查询：
+             示例：select * from student where id in (1,2,6,8);
+             select * from student where id between 6 and 8;
+        f、空判断:
+            insert into student(name,age) values('特朗普',70);
+            说明：null与''不同
+            select * from student where address is null;(或者is not)
+        g、优先级
+            小括号，not  比较运算符，逻辑运算符
+            and 比 or 优先级高，如果同时出现并希望先选or，
+            需要结合()使用
     4、聚合查询：
-            a、count(*)         表示计算总行数，括号中可以写*和字段
-            b、max（字段）      表示求此列的最大值
-            c、min(字段)        表示求此列的最小值
-            d、sum(字段)        表示求此列的和
-            e、avg(字段)        表示求此列的和
-            select max(age) from student where gender='0';
+        a、count(*)         表示计算总行数，括号中可以写*和字段
+        b、max（字段）      表示求此列的最大值
+        c、min(字段)        表示求此列的最小值
+        d、sum(字段)        表示求此列的和
+        e、avg(字段)        表示求此列的和
+        select max(age) from student where gender='0';
 
     5、分组查询:
-            按照字段分组，表示此字段相同的数据会被放到一个集合中。
-            分组后，只能查询相同的数据列，对于有差异的数据列无法显示在结果集中
-            可以对分组数据进行统计，做聚合运算
+        按照字段分组，表示此字段相同的数据会被放到一个集合中。
+        分组后，只能查询相同的数据列，对于有差异的数据列无法显示在结果集中
+        可以对分组数据进行统计，做聚合运算
             语法：select 列1,列2,聚合……  from  表 group by 列1，列2，列3，……
             需求：查询男女生总数：
-            示例：select gender,count(*) from student group by gender;
+            示例：select gender, count(*) from student group by gender;
             分组后的数据筛选：
-            select 列1,列2,聚合……  from 表 group by having 列1，列2，列3，……,聚合……
-            示例：select gender,count(*) from student group by gender  having gender=0;
-             where和having的区别：
-             where是对from后面指定的表进行筛选，属于对原始表进行筛选。
-             having是对group by的结果进行筛选
-     select id,name from teachers where name in (select name from teachers group by name having count(name)>1);
+                select 列1, 列2, 聚合……  from 表 group by having 列1，列2，列3，……,聚合……
+            示例：select gender, count(*) from student group by gender having gender=0;
+        where和having的区别：
+            where是对from后面指定的表进行筛选，属于对原始表进行筛选。
+            having是对group by的结果进行筛选
+            select id,name from teachers where name in (select name from teachers group by name having count(name)>1);
     6、排序:
-             语法：select * from 表名 order by 列1 asc|desc,列2 asc|desc
-             说明：将数据按照列1进行排序，如果某些列1的值相同，那么按照列2排……
-                   默认按照升序排列，asc升序，desc降序
+        语法：select * from 表名 order by 列1 asc|desc,列2 asc|desc
+        说明：将数据按照列1进行排序，如果某些列1的值相同，那么按照列2排……
+           默认按照升序排列，asc升序，desc降序
     7、分页：
-             语法：select * from 表名 limit x,y;
-             说明：从第x+1行开始，查询y行的内容
+        语法：select * from 表名 limit x,y;
+        说明：从第x+1行开始，查询y行的内容
 
 六、关联查询：
      建表语句：

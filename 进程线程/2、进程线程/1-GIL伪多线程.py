@@ -33,17 +33,21 @@ print("Time taken in seconds -",end -  start)  #3.943225622177124
 
 import time
 from multiprocessing import Pool
+
 COUNT = 50000000
+
+
 def countdown(n):
     while n > 0:
         n -= 1
+
+
 if __name__ == "__main__":
-    pool = Pool(processes = 2)
+    pool = Pool(processes=2)
     start = time.time()
-    r1 = pool.apply_async(countdown,[COUNT//2])
-    r2 = pool.apply_async(countdown,[COUNT//2])
+    r1 = pool.apply_async(countdown, [COUNT // 2])
+    r2 = pool.apply_async(countdown, [COUNT // 2])
     pool.close()
     pool.join()
     end = time.time()
-    print("Time taken in seconds -",end - start)   #创建多进程
-
+    print("Time taken in seconds -", end - start)  # 创建多进程

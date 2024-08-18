@@ -1,5 +1,4 @@
-ORM对象关系映射
-全称 Object Relational Mapping，对象关系映射
+ORM对象关系映射：全称 Object Relational Mapping，对象关系映射
 
 将数据库中的表映射为python中的类，，一张表就是一个类，表中的字段映射为类的属性
 将python代码翻译为对应的数据库sql语句
