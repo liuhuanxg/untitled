@@ -1,4 +1,4 @@
-#将字典按照value值排序
+# 将字典按照value值排序
 """
 d= {'a':24,'g':52,'i':12,'k':33}
 print(d.items())
@@ -10,45 +10,52 @@ for i in d1:
 print(dict)
 """
 
-#字典推导式
+# 字典推导式
 # 8.将字符串 "k:1 |k1:2|k2:3|k3:4"，处理成字典 {k:1,k1:2,...}
 str1 = "k:1|k1:2|k2:3|k3:4"
+
+
 def str2dict(str1):
     dict1 = {}
     for iterms in str1.split('|'):
-        key,value = iterms.split(':')
+        key, value = iterms.split(':')
         dict1[key] = value
     return dict1
 
-d = {k:int(v) for t in str1.split("|") for k, v in (t.split(":"), )}
+
+d = {k: int(v) for t in str1.split("|") for k, v in (t.split(":"),)}
 print(d)
 
+# 9.请按alist中元素的age由大到小排序
+alist = [{'name': 'a', 'age': 20}, {'name': 'b', 'age': 30}, {'name': 'c', 'age': 25}]
 
-#9.请按alist中元素的age由大到小排序
-alist = [{'name':'a','age':20},{'name':'b','age':30},{'name':'c','age':25}]
+
 def sort_by_age(list1):
-    return sorted(alist,key=lambda x:x['age'],reverse=True)
+    return sorted(alist, key=lambda x: x['age'], reverse=True)
+
+
 print(sort_by_age(alist))
 
-
 # 13.请写出一段python代码实现删除list里面的重复元素？
-l1 = ['b','c','d','c','a','a']
+l1 = ['b', 'c', 'd', 'c', 'a', 'a']
 l2 = list(set(l1))
 print(l2)
 
-l1 = ['b','c','d','c','a','a']
+l1 = ['b', 'c', 'd', 'c', 'a', 'a']
 l2 = list(set(l1))
 l2.sort(key=l1.index)
 print(l2)
 
+f1 = lambda x, y: x + y
+print(type(f1), f1)
 
-f1 = lambda x,y:x+y
-print(type(f1),f1)
+f2 = lambda x, y: x + y
+print(type(f2), f2)
 
-f2 = lambda x,y:x+y
-print(type(f2),f2)
+
 def func():
     pass
 
+
 f3 = func
-print(type(f3),f3)
+print(type(f3), f3)

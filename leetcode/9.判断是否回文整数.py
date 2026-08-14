@@ -17,8 +17,10 @@ File Name: 9.判断是否回文整数.py
 class Solution():
     def isPalindrome(self, x: int) -> bool:
         x_str = str(x)
-        return True if x_str == x_str[::-1] else False
+        return x_str == x_str[::-1]
 
 
 if __name__ == '__main__':
     s = Solution()
+    assert s.isPalindrome(121) == True
+    assert s.isPalindrome(123) == False

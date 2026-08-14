@@ -8,7 +8,7 @@
 """
 r  只读     r+ 可读可写
 w  覆盖写   w+ 可读可覆盖写
-r  追加写   r+ 可读可追加写
+a  追加写   a+ 可读可追加写
 
 'r'       open for reading (default)
 'w'       open for writing, truncating the file first
@@ -23,6 +23,10 @@ r  追加写   r+ 可读可追加写
 
 with open("test.txt","r") as fp:
     result = fp.read()
+    print(result)
+
+with open("test.txt","r+") as fp:
+    fp.write("\nhahaha")
     print(result)
 
 with open("test.txt","a+") as fp:

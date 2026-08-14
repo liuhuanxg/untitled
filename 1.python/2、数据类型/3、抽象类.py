@@ -1,20 +1,25 @@
 import abc
+
+
 class Person(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def eat(self):
-        pass
+        print("Person eat")
 
     @abc.abstractmethod
     def sleep(self):
-        pass
+        print("Person sleep")
 
     def breath(self):
         print("breath")
 
+
 class Hero():
     def kungfu(self):
         print("功夫")
-class Man(Person,Hero):
+
+
+class Man(Person, Hero):
     # 抽象类必须复写所有的抽象方法，不管有没有调用
     # 只要有一个没有复写就会在实例化对象时报错
     def eat(self):
@@ -23,9 +28,10 @@ class Man(Person,Hero):
     def sleep(self):
         print("人睡觉")
 
-p=Person()
-list2=[23]
-list3=sorted(list2)
-m=Man()
+
+# p = Person()
+list2 = [23]
+list3 = sorted(list2)
+m = Man()
 m.kungfu()
 # m.eat()
