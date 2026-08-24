@@ -38,6 +38,15 @@ class Solution(object):
 
         return max_len
 
+    def find_max_length_sub_string(self, s):
+        subString = ""
+        max_length = 0
+        for i in s:
+            while i in subString:
+                subString = subString[1:]
+            subString += i
+            max_length = max(max_length, len(subString))
+        return max_length
 
 if __name__ == '__main__':
     s = Solution()
